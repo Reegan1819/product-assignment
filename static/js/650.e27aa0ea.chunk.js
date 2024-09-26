@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkproduct_listing_app=self.webpackChunkproduct_listing_app||[]).push([[650],{2650:(s,e,i)=>{i.r(e),i.d(e,{default:()=>r});i(5043);var l=i(579);const r=()=>(0,l.jsxs)("div",{className:"sidebar",children:[(0,l.jsx)("h2",{children:"Categories"}),(0,l.jsxs)("ul",{children:[(0,l.jsx)("li",{children:"Electronics"}),(0,l.jsx)("li",{children:"Fashion"}),(0,l.jsx)("li",{children:"Home & Garden"}),(0,l.jsx)("li",{children:"Sports"}),(0,l.jsx)("li",{children:"Health & Beauty"})]})]})}}]);
+//# sourceMappingURL=650.e27aa0ea.chunk.js.map
