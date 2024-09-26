@@ -3,11 +3,15 @@ import { Table } from "react-bootstrap";
 import TitleModal from "./TitleModal";
 import { Product } from "../Redux/Types/ProductTypes";
 
-
-
 interface ProductTableProps {
   products: Product[];
 }
+
+const styles = {
+  table: {
+    backgroundColor: "lightgray",
+  },
+};
 
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const [showModal, setShowModal] = React.useState(false);
@@ -25,32 +29,46 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   };
   return (
     <Table striped bordered hover>
-      <thead>
+      <thead className="thead-dark ">
         <tr>
-          <th>#</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Availability Status</th>
-          <th>Price</th>
-          <th>Rating</th>
-          <th>Thumbnail</th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            ID
+          </th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            Title
+          </th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            Category
+          </th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            Availability Status
+          </th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            Price
+          </th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            Rating
+          </th>
+          <th className="text-center" style={{ backgroundColor: "lightgray" }}>
+            Thumbnail
+          </th>
         </tr>
       </thead>
       <tbody>
         {products.map((product) => (
           <tr key={product.id}>
-            <td>{product.id}</td>
+            <td className="text-center">{product.id}</td>
             <td
               style={{ cursor: "pointer" }}
               onClick={() => handleTitleClick(product)}
             >
               {product.title}
             </td>
-            <td>{product.category}</td>
-            <td>{product.availabilityStatus}</td>
-            <td>{product.price}</td>
-            <td>{product.rating}</td>
-            <td>
+            <td className="text-center">{product.category}</td>
+            <td className="text-center">{product.availabilityStatus}</td>
+            <td className="text-center">{product.price}</td>
+            <td className="text-center">{product.rating}</td>
+            <td className="text-center">
               <img
                 src={product.thumbnail}
                 alt={product.title}
@@ -65,7 +83,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
         setShowModal={setShowModal}
         selectedProduct={selectedProduct}
         setSelectedProduct={setSelectedProduct}
-        products={localProducts} 
+        products={localProducts}
         setProducts={setLocalProducts}
       />
     </Table>

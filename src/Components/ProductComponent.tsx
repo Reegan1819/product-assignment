@@ -3,11 +3,12 @@ import { RootState } from "../Redux/Reducer/rootReducer";
 import React, { useEffect, useState, Suspense } from "react";
 import { fetchProducts } from "../Redux/Actions/ProductAction";
 import { useAppDispatch } from "./hooks";
-import { Card, Col, Row } from "react-bootstrap";
+// import { Card, Col, Row } from "react-bootstrap";
 import "../Components/ProductComponent.css";
+import ProductNavBar from "./ProductNavBar";
 
 const Sidebar = React.lazy(() => import("./Sidebar"));
-const LazyImage = React.lazy(() => import("./LazyImage"));
+// const LazyImage = React.lazy(() => import("./LazyImage"));
 const ProductListPagination = React.lazy(() => import("./Pagination"));
 const LearnerLoader = React.lazy(() => import("./Loader"));
 const ProductTable = React.lazy(() => import("./ProductTable"));
@@ -47,6 +48,7 @@ const ProductComponent: React.FC = () => {
       </Suspense>
 
       <div className="container mt-4" style={{ flex: 1, marginLeft: "261px" }}>
+        <ProductNavBar />
         <Suspense fallback={<div>Loading...</div>}>
           {isLoading ? <LearnerLoader /> : <ProductTable products={products} />}
         </Suspense>
