@@ -41,17 +41,13 @@ export const productReducer = (
       };
 
     case "PRODUCT_UPDATE_SUCCESS":
-      const updatedProducts = state.productsArr.products.map((product) => {
-        if (product.id === action.payload.id) {
-          return action.payload;
-        }
-        return product;
-      });
       return {
         ...state,
         productsArr: {
           ...state.productsArr,
-          products: updatedProducts,
+          products: state?.productsArr?.products?.map((product) =>
+            product.id === action.payload.id ? action.payload : product
+          ),
         },
         error: null,
       };

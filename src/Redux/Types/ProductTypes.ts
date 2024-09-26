@@ -1,15 +1,15 @@
 export interface Product {
   id: number;
-  name: string;
-  description: string;
-  price: number;
   title: string;
-  images: string[];
-  discountPercentage: number;
+  // description: string;
   category: string;
-  availabilityStatus: string;
+  price: number;
+  // discountPercentage: number;
   rating: number;
+  // stock: number;
+  availabilityStatus: string;
   thumbnail: string;
+  // images: string[];
 }
 
 interface ProductsArr {

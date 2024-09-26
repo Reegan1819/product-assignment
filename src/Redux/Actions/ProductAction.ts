@@ -29,17 +29,17 @@ export const fetchProductsFailure = (error: string): ProductActionTypes => {
 };
 
 export const productUpdateSuccess = (product: Product): ProductActionTypes => {
-    return {
-        type: "PRODUCT_UPDATE_SUCCESS",
-        payload: product,
-    };
-    }
+  return {
+    type: "PRODUCT_UPDATE_SUCCESS",
+    payload: product,
+  };
+};
 
 export const productUpdateFailure = (error: string): ProductActionTypes => {
-    return {
-        type: "PRODUCT_UPDATE_FAILURE",
-        payload: error,
-    };
+  return {
+    type: "PRODUCT_UPDATE_FAILURE",
+    payload: error,
+  };
 };
 
 export const fetchProducts = (
@@ -64,22 +64,28 @@ export const fetchProducts = (
 };
 
 export const updateProduct = (product: Product) => async (dispatch: any) => {
-    try {
-        const response = await fetch(
-            `https://dummyjson.com/products/${product.id}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(product),
-            }
-        );
-        if (!response.ok) {
-            throw new Error("Failed to update product");
-        }
-        dispatch(productUpdateSuccess(product));
-    } catch (error: any) {
-        dispatch(productUpdateFailure(error.message));
+  console.log(product.id, "thunk");
+  
+  try {
+    const response = await fetch(
+      `https://dummyjson.com/products/${product.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product), // Ensure this has all updated fields
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to update product");
     }
+
+    // If you want to get the updated product from the response
+    const updatedProduct = await response.json();
+    dispatch(productUpdateSuccess(updatedProduct)); // Dispatch the updated product
+  } catch (error: any) {
+    dispatch(productUpdateFailure(error.message));
+  }
 };

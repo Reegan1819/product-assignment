@@ -1,16 +1,9 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import TitleModal from "./TitleModal";
+import { Product } from "../Redux/Types/ProductTypes";
 
-interface Product {
-  id: number;
-  title: string;
-  category: string;
-  availabilityStatus: string;
-  price: number;
-  rating: number;
-  thumbnail: string;
-}
+
 
 interface ProductTableProps {
   products: Product[];
@@ -21,6 +14,8 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = React.useState<Product | null>(
     null
   );
+
+  const [localProducts, setLocalProducts] = React.useState<Product[]>(products);
 
   const handleTitleClick = (product: Product) => {
     console.log(product);
@@ -65,7 +60,14 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
           </tr>
         ))}
       </tbody>
-      {/* <TitleModal showModal={showModal} setShowModal={setShowModal} selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} /> */}
+      <TitleModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        selectedProduct={selectedProduct}
+        setSelectedProduct={setSelectedProduct}
+        products={localProducts} 
+        setProducts={setLocalProducts}
+      />
     </Table>
   );
 };
